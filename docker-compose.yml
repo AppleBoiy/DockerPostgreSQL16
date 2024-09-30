@@ -1,11 +1,12 @@
-name: "postgres16"
+name: "cs321"
 services:
   database:
-    container_name: postgres16
+    container_name: cs321db
     image: postgres:16.3-alpine3.20
     ports:
       - "5432:5432"
     volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
       - ./postgres_data:/var/lib/postgresql/data/
     environment:
       - POSTGRES_USER=postgres
